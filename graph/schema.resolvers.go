@@ -6,6 +6,7 @@ package graph
 import (
 	"context"
 	"fmt"
+	"math/rand"
 
 	"github.com/bradmccoydev/graphql/graph/generated"
 	"github.com/bradmccoydev/graphql/graph/model"
@@ -24,7 +25,12 @@ func (r *mutationResolver) DeleteApplicationMetadataRegistry(ctx context.Context
 }
 
 func (r *queryResolver) GetApplicationMetadataRegistry(ctx context.Context, id string, version string) (*model.ApplicationMetadataRegistry, error) {
-	panic(fmt.Errorf("not implemented"))
+	applicationMetadata := &model.ApplicationMetadataRegistry{
+		ID: fmt.Sprintf("T%d", rand.Int()),
+		Version: "brad",
+	}
+	r.applicationMetadata = append(r.applicationMetadata, applicationMetadata)
+	return applicationMetadata, nil
 }
 
 func (r *queryResolver) ListApplicationMetadataRegistries(ctx context.Context, filter *model.TableApplicationMetadataRegistryFilterInput, limit *int, nextToken *string) (*model.ApplicationMetadataRegistryConnection, error) {
