@@ -11,11 +11,23 @@ import (
 	"github.com/bradmccoydev/graphql/graph/model"
 )
 
-func (r *mutationResolver) CreateTodo(ctx context.Context, input model.NewTodo) (*model.Todo, error) {
+func (r *mutationResolver) CreateApplicationMetadataRegistry(ctx context.Context, input model.CreateApplicationMetadataRegistryInput) (*model.ApplicationMetadataRegistry, error) {
 	panic(fmt.Errorf("not implemented"))
 }
 
-func (r *queryResolver) Todos(ctx context.Context) ([]*model.Todo, error) {
+func (r *mutationResolver) UpdateApplicationMetadataRegistry(ctx context.Context, input model.UpdateApplicationMetadataRegistryInput) (*model.ApplicationMetadataRegistry, error) {
+	panic(fmt.Errorf("not implemented"))
+}
+
+func (r *mutationResolver) DeleteApplicationMetadataRegistry(ctx context.Context, input model.DeleteApplicationMetadataRegistryInput) (*model.ApplicationMetadataRegistry, error) {
+	panic(fmt.Errorf("not implemented"))
+}
+
+func (r *queryResolver) GetApplicationMetadataRegistry(ctx context.Context, id string, version string) (*model.ApplicationMetadataRegistry, error) {
+	panic(fmt.Errorf("not implemented"))
+}
+
+func (r *queryResolver) ListApplicationMetadataRegistries(ctx context.Context, filter *model.TableApplicationMetadataRegistryFilterInput, limit *int, nextToken *string) (*model.ApplicationMetadataRegistryConnection, error) {
 	panic(fmt.Errorf("not implemented"))
 }
 

@@ -1,28 +1,111 @@
-# GraphQL schema example
-#
-# https://gqlgen.com/getting-started/
-
-type Todo {
-  id: ID!
-  text: String!
-  done: Boolean!
-  user: User!
+type ApplicationMetadataRegistry {
+	id: String!
+	version: String!
+  created_by: String
+	created_date: String
+	cron_schedule: String
+	description: String
+	documentation: String
+	endpoint: String
+	endpoint_id: String
+	last_executed: String
+	last_updated_by: String
+	last_updated_date: String
+	parameters: String
+	schema_definition: String
+	team: String
+	title: String
+	type: String
+	locked: String
 }
 
-type User {
-  id: ID!
-  name: String!
+type ApplicationMetadataRegistryConnection {
+	items: [ApplicationMetadataRegistry]
+	nextToken: String
 }
 
-type Query {
-  todos: [Todo!]!
+input CreateApplicationMetadataRegistryInput {
+	id: String!
+	version: String!
 }
 
-input NewTodo {
-  text: String!
-  userId: String!
+input DeleteApplicationMetadataRegistryInput {
+	id: String!
+	version: String!
 }
 
 type Mutation {
-  createTodo(input: NewTodo!): Todo!
+	createApplicationMetadataRegistry(input: CreateApplicationMetadataRegistryInput!): ApplicationMetadataRegistry
+	updateApplicationMetadataRegistry(input: UpdateApplicationMetadataRegistryInput!): ApplicationMetadataRegistry
+	deleteApplicationMetadataRegistry(input: DeleteApplicationMetadataRegistryInput!): ApplicationMetadataRegistry
+}
+
+type Query {
+	getApplicationMetadataRegistry(id: String!, version: String!): ApplicationMetadataRegistry
+	listApplicationMetadataRegistries(filter: TableApplicationMetadataRegistryFilterInput, limit: Int, nextToken: String): ApplicationMetadataRegistryConnection
+}
+
+input TableApplicationMetadataRegistryFilterInput {
+	id: TableStringFilterInput
+	version: TableStringFilterInput
+}
+
+input TableBooleanFilterInput {
+	ne: Boolean
+	eq: Boolean
+}
+
+input TableFloatFilterInput {
+	ne: Float
+	eq: Float
+	le: Float
+	lt: Float
+	ge: Float
+	gt: Float
+	contains: Float
+	notContains: Float
+	between: [Float]
+}
+
+input TableIDFilterInput {
+	ne: ID
+	eq: ID
+	le: ID
+	lt: ID
+	ge: ID
+	gt: ID
+	contains: ID
+	notContains: ID
+	between: [ID]
+	beginsWith: ID
+}
+
+input TableIntFilterInput {
+	ne: Int
+	eq: Int
+	le: Int
+	lt: Int
+	ge: Int
+	gt: Int
+	contains: Int
+	notContains: Int
+	between: [Int]
+}
+
+input TableStringFilterInput {
+	ne: String
+	eq: String
+	le: String
+	lt: String
+	ge: String
+	gt: String
+	contains: String
+	notContains: String
+	between: [String]
+	beginsWith: String
+}
+
+input UpdateApplicationMetadataRegistryInput {
+	id: String!
+	version: String!
 }

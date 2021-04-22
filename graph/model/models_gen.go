@@ -2,19 +2,103 @@
 
 package model
 
-type NewTodo struct {
-	Text   string `json:"text"`
-	UserID string `json:"userId"`
+type ApplicationMetadataRegistry struct {
+	ID               string  `json:"id"`
+	Version          string  `json:"version"`
+	CreatedBy        *string `json:"created_by"`
+	CreatedDate      *string `json:"created_date"`
+	CronSchedule     *string `json:"cron_schedule"`
+	Description      *string `json:"description"`
+	Documentation    *string `json:"documentation"`
+	Endpoint         *string `json:"endpoint"`
+	EndpointID       *string `json:"endpoint_id"`
+	LastExecuted     *string `json:"last_executed"`
+	LastUpdatedBy    *string `json:"last_updated_by"`
+	LastUpdatedDate  *string `json:"last_updated_date"`
+	Parameters       *string `json:"parameters"`
+	SchemaDefinition *string `json:"schema_definition"`
+	Team             *string `json:"team"`
+	Title            *string `json:"title"`
+	Type             *string `json:"type"`
+	Locked           *string `json:"locked"`
 }
 
-type Todo struct {
-	ID   string `json:"id"`
-	Text string `json:"text"`
-	Done bool   `json:"done"`
-	User *User  `json:"user"`
+type ApplicationMetadataRegistryConnection struct {
+	Items     []*ApplicationMetadataRegistry `json:"items"`
+	NextToken *string                        `json:"nextToken"`
 }
 
-type User struct {
-	ID   string `json:"id"`
-	Name string `json:"name"`
+type CreateApplicationMetadataRegistryInput struct {
+	ID      string `json:"id"`
+	Version string `json:"version"`
+}
+
+type DeleteApplicationMetadataRegistryInput struct {
+	ID      string `json:"id"`
+	Version string `json:"version"`
+}
+
+type TableApplicationMetadataRegistryFilterInput struct {
+	ID      *TableStringFilterInput `json:"id"`
+	Version *TableStringFilterInput `json:"version"`
+}
+
+type TableBooleanFilterInput struct {
+	Ne *bool `json:"ne"`
+	Eq *bool `json:"eq"`
+}
+
+type TableFloatFilterInput struct {
+	Ne          *float64   `json:"ne"`
+	Eq          *float64   `json:"eq"`
+	Le          *float64   `json:"le"`
+	Lt          *float64   `json:"lt"`
+	Ge          *float64   `json:"ge"`
+	Gt          *float64   `json:"gt"`
+	Contains    *float64   `json:"contains"`
+	NotContains *float64   `json:"notContains"`
+	Between     []*float64 `json:"between"`
+}
+
+type TableIDFilterInput struct {
+	Ne          *string   `json:"ne"`
+	Eq          *string   `json:"eq"`
+	Le          *string   `json:"le"`
+	Lt          *string   `json:"lt"`
+	Ge          *string   `json:"ge"`
+	Gt          *string   `json:"gt"`
+	Contains    *string   `json:"contains"`
+	NotContains *string   `json:"notContains"`
+	Between     []*string `json:"between"`
+	BeginsWith  *string   `json:"beginsWith"`
+}
+
+type TableIntFilterInput struct {
+	Ne          *int   `json:"ne"`
+	Eq          *int   `json:"eq"`
+	Le          *int   `json:"le"`
+	Lt          *int   `json:"lt"`
+	Ge          *int   `json:"ge"`
+	Gt          *int   `json:"gt"`
+	Contains    *int   `json:"contains"`
+	NotContains *int   `json:"notContains"`
+	Between     []*int `json:"between"`
+}
+
+type TableStringFilterInput struct {
+	Ne          *string   `json:"ne"`
+	Eq          *string   `json:"eq"`
+	Le          *string   `json:"le"`
+	Lt          *string   `json:"lt"`
+	Ge          *string   `json:"ge"`
+	Gt          *string   `json:"gt"`
+	Contains    *string   `json:"contains"`
+	NotContains *string   `json:"notContains"`
+	Between     []*string `json:"between"`
+	BeginsWith  *string   `json:"beginsWith"`
+}
+
+type UpdateApplicationMetadataRegistryInput struct {
+	ID      string `json:"id"`
+	Version string `json:"version"`
 }
